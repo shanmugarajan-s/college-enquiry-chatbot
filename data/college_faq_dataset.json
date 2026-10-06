@@ -1,0 +1,757 @@
+{
+  "college_name": "Apex Institute of Science & Technology (AIST)",
+  "categories": [
+    "courses",
+    "fees",
+    "exams",
+    "departments",
+    "timings",
+    "facilities",
+    "general",
+    "out_of_scope"
+  ],
+  "intents": [
+    {
+      "intent": "course_list_ug",
+      "category": "courses",
+      "description": "List of Undergraduate (UG) degree programs",
+      "patterns": [
+        "What undergraduate courses are offered?",
+        "What UG programs do you have?",
+        "List of bachelor degree courses",
+        "Which B.Tech courses are available?",
+        "What courses can I join after 12th standard?",
+        "Do you offer B.Tech, BCA, or B.Sc?",
+        "Tell me about undergraduate engineering options",
+        "UG courses offered by college",
+        "Bachelor degrees at your institute",
+        "What four-year degree programs are available?"
+      ],
+      "entities": ["B.Tech", "BCA", "B.Sc", "UG"],
+      "response": "Apex Institute offers the following Undergraduate (UG) programs: \n1. B.Tech (Computer Science & Engineering, Artificial Intelligence & ML, Electronics & Communication, Mechanical Engineering, Civil Engineering, Biotechnology)\n2. BCA (Bachelor of Computer Applications)\n3. B.Sc (Data Science & Applied Mathematics)\n4. BBA (Bachelor of Business Administration). All programs are 3-4 years in duration and approved by AICTE/UGC.",
+      "suggestions": ["B.Tech eligibility", "B.Tech tuition fee", "Admission process"]
+    },
+    {
+      "intent": "course_list_pg",
+      "category": "courses",
+      "description": "List of Postgraduate (PG) degree programs",
+      "patterns": [
+        "What postgraduate courses are available?",
+        "What masters programs do you have?",
+        "List of PG degrees",
+        "Tell me about M.Tech and MBA programs",
+        "Do you have MCA course?",
+        "What courses are available after graduation?",
+        "Master degree courses at college",
+        "PG programs offered",
+        "Postgraduate engineering and management courses",
+        "Can I do M.Tech or MBA here?"
+      ],
+      "entities": ["M.Tech", "MBA", "MCA", "PG"],
+      "response": "Our Postgraduate (PG) programs include:\n1. M.Tech in Computer Science, VLSI Design, and Thermal Engineering (2 Years)\n2. MBA in Finance, Marketing, HR, and Business Analytics (2 Years)\n3. MCA - Master of Computer Applications (2 Years)\n4. M.Sc in Data Analytics (2 Years).\nAll programs feature industry-aligned specializations and capstone projects.",
+      "suggestions": ["MBA fee structure", "M.Tech eligibility", "PG placement statistics"]
+    },
+    {
+      "intent": "course_eligibility",
+      "category": "courses",
+      "description": "Eligibility criteria for admissions across programs",
+      "patterns": [
+        "What is the eligibility criteria for admission?",
+        "What are the requirements for B.Tech admission?",
+        "Minimum marks needed for B.Tech CSE",
+        "Can I get admission with 60% in 12th?",
+        "What are the entrance exams accepted for engineering?",
+        "Eligibility for MBA program",
+        "What qualifications do I need for MCA?",
+        "Do you accept JEE Main scores?",
+        "Admission requirements for undergraduate programs",
+        "Cutoff marks for admission"
+      ],
+      "entities": ["eligibility", "B.Tech", "MBA", "JEE", "cutoff"],
+      "response": "Eligibility Criteria:\n- B.Tech: Minimum 60% aggregate in 10+2 with Physics, Mathematics, and Chemistry/Computer Science. Valid JEE Main or State CET rank is required.\n- BCA/BBA: 10+2 with minimum 50% marks in any stream (Mathematics preferred for BCA).\n- M.Tech: B.E./B.Tech degree with minimum 55% marks and valid GATE or PGCET score.\n- MBA: Bachelor's degree in any discipline with minimum 50% marks and valid CAT/MAT/CMAT score.\n- MCA: BCA or B.Sc Computer Science / IT / Mathematics with at least 50% marks.",
+      "suggestions": ["How to apply", "Fee structure", "Scholarship options"]
+    },
+    {
+      "intent": "course_duration",
+      "category": "courses",
+      "description": "Duration and credit structure of academic courses",
+      "patterns": [
+        "How long is the B.Tech program?",
+        "What is the duration of MCA?",
+        "How many years does MBA take?",
+        "Course duration of undergraduate degrees",
+        "How many semesters are in B.Tech?",
+        "Credit requirements and duration of courses",
+        "Is BCA a 3 year or 4 year degree?",
+        "Total semesters in M.Tech",
+        "Number of years for diploma and degree",
+        "Program length"
+      ],
+      "entities": ["duration", "semesters", "credits", "years"],
+      "response": "Program Durations:\n- B.Tech: 4 Years (8 Semesters, 160 Credits)\n- BCA & BBA: 3 Years (6 Semesters, 120 Credits; 4-Year Research Honors option available under NEP)\n- M.Tech: 2 Years (4 Semesters, 70 Credits)\n- MBA & MCA: 2 Years (4 Semesters, 80 Credits)\n- Ph.D: 3 to 5 Years depending on research thesis.",
+      "suggestions": ["Course syllabus", "Exam schedule", "List of UG courses"]
+    },
+    {
+      "intent": "course_syllabus",
+      "category": "courses",
+      "description": "Course curriculum, syllabus, and credit distribution",
+      "patterns": [
+        "Where can I find the course syllabus?",
+        "Show me the curriculum for B.Tech CSE",
+        "What subjects are taught in second year?",
+        "Can I download the syllabus PDF?",
+        "How is the course curriculum structured?",
+        "Are electives offered in third year?",
+        "Subject list for computer science",
+        "Where is the academic syllabus available?",
+        "Course curriculum and credit schema",
+        "Download syllabus for MBA"
+      ],
+      "entities": ["syllabus", "curriculum", "subjects", "electives"],
+      "response": "You can download the updated syllabus for all academic programs from the Student ERP Portal under 'Academic Curriculum' (https://erp.apex-institute.edu/syllabus). The curriculum follows the Outcome-Based Education (OBE) model with core credits, open interdisciplinary electives, industry internships, and minor degree options.",
+      "suggestions": ["Department details", "Exam grading", "Academic calendar"]
+    },
+    {
+      "intent": "fee_structure",
+      "category": "fees",
+      "description": "Tuition and academic fee details for courses",
+      "patterns": [
+        "What is the fee structure for B.Tech?",
+        "How much is the tuition fee per year?",
+        "What are the college fees for CSE?",
+        "Annual fees for undergraduate courses",
+        "How much does MBA cost?",
+        "Total cost of 4 year B.Tech course",
+        "Fee breakdown for first year students",
+        "Tell me the tuition fees for MCA and M.Tech",
+        "Is there an admission fee and caution deposit?",
+        "What is the complete fee structure?"
+      ],
+      "entities": ["tuition fee", "fee structure", "B.Tech fee", "MBA fee"],
+      "response": "Annual Tuition Fee Structure (Academic Year 2026-27):\n- B.Tech (CSE, AI&ML): $120,000 / INR 1,40,000 per annum\n- B.Tech (ECE, Mech, Civil): $100,000 / INR 1,15,000 per annum\n- BCA / BBA: $75,000 / INR 85,000 per annum\n- M.Tech: $90,000 / INR 1,00,000 per annum\n- MBA: $130,000 / INR 1,50,000 per annum\n- MCA: $85,000 / INR 95,000 per annum\nNote: A one-time refundable caution deposit of INR 10,000 is charged during admission.",
+      "suggestions": ["Hostel fees", "Payment modes", "Scholarships"]
+    },
+    {
+      "intent": "hostel_fees",
+      "category": "fees",
+      "description": "Hostel room rent, mess charges, and boarding fees",
+      "patterns": [
+        "How much are the hostel fees?",
+        "What is the cost of accommodation and mess?",
+        "Hostel charges per year",
+        "Do you have AC rooms and what is the fee?",
+        "Mess fee and room rent details",
+        "How much do I pay for hostel per semester?",
+        "Boarding and lodging fee breakdown",
+        "Hostel security deposit and annual rent",
+        "Cost of living in campus hostel",
+        "Triple sharing and double sharing room cost"
+      ],
+      "entities": ["hostel fee", "mess fee", "AC room", "accommodation"],
+      "response": "Annual Hostel & Boarding Fees:\n- Non-AC Room (3 Sharing): INR 75,000 / year (includes 4 meals/day mess)\n- Non-AC Room (2 Sharing): INR 85,000 / year\n- AC Room (2 Sharing): INR 1,15,000 / year (includes power backup & Wi-Fi)\n- Single Occupancy (AC, Final year & PG): INR 1,45,000 / year\nIncludes breakfast, lunch, evening snacks, dinner, laundry, 24/7 water, and Wi-Fi. Refundable hostel deposit is INR 5,000.",
+      "suggestions": ["Hostel facilities", "Fee payment modes", "College timings"]
+    },
+    {
+      "intent": "exam_fees",
+      "category": "fees",
+      "description": "Examination fees, backlog exam fees, and certificate charges",
+      "patterns": [
+        "What is the examination fee?",
+        "How much is the fee for semester exams?",
+        "Backlog exam fee per paper",
+        "Supplementary exam fee details",
+        "Cost for revaluation of exam papers",
+        "Exam form fee and deadlines",
+        "Fee for provisional degree certificate",
+        "How much to pay for reappearing in exam?",
+        "What are the exam charges per semester?",
+        "Arrear exam fee"
+      ],
+      "entities": ["exam fee", "backlog fee", "revaluation fee"],
+      "response": "Examination Fee Details:\n- Regular Semester Examination Fee: INR 1,800 per semester\n- Backlog / Arrear Examination Fee: INR 500 per subject\n- Revaluation / Paper Rechecking Fee: INR 750 per answer script\n- Duplicate Grade Card / Transcripts: INR 400 per copy\n- Degree Convocation & Provisional Certificate Fee: INR 2,500 (final semester).",
+      "suggestions": ["Exam schedule", "How to pay exam fee", "Revaluation procedure"]
+    },
+    {
+      "intent": "scholarships",
+      "category": "fees",
+      "description": "Merit scholarships, financial aid, and fee concessions",
+      "patterns": [
+        "Are scholarships available for students?",
+        "Can I get a fee concession based on 12th marks?",
+        "Merit scholarship criteria and percentage",
+        "Is there financial aid for economically weaker sections?",
+        "Sports quota scholarship details",
+        "Do you accept government scholarships like NSP?",
+        "How to apply for college scholarships?",
+        "Scholarships for girl students and defense wards",
+        "Tuition fee waiver scheme",
+        "Financial assistance programs"
+      ],
+      "entities": ["scholarship", "financial aid", "merit", "fee waiver"],
+      "response": "Apex Institute provides extensive Scholarship Schemes:\n1. Merit Scholarship: 50% tuition waiver for >95% in 12th/JEE Rank < 10,000; 25% waiver for 90-95% in 12th.\n2. Women in STEM Scholarship: 20% tuition concession for female engineering aspirants.\n3. Sports Excellence Scholarship: Up to 100% concession for national/state level players.\n4. Need-Based / EWS Aid: Up to 40% waiver based on verified family income < 3 LPA.\n5. Government Scholarships: Full support for National Scholarship Portal (NSP), Post-Matric, and state schemes.",
+      "suggestions": ["Fee structure", "Admission criteria", "Contact counselor"]
+    },
+    {
+      "intent": "fee_payment_mode",
+      "category": "fees",
+      "description": "Payment gateways, installment facilities, and refund rules",
+      "patterns": [
+        "How do I pay college fees?",
+        "Can I pay the fees in installments?",
+        "Online payment modes accepted for fees",
+        "Can I pay fee via Net Banking, UPI, or Credit Card?",
+        "What is the college bank account for NEFT/RTGS?",
+        "What is the fee refund policy if I cancel admission?",
+        "Is education loan assistance available?",
+        "Due dates for fee payment",
+        "Late fee fine on semester payment",
+        "Fee payment portal link"
+      ],
+      "entities": ["payment mode", "installments", "refund policy", "net banking", "UPI"],
+      "response": "Fee Payment & Policy:\n- Modes: Fees can be paid online via the ERP Portal (Net Banking, UPI, Debit/Credit Card) or via Demand Draft / NEFT / RTGS in favor of 'Apex Institute of Science & Technology'.\n- Installments: Semester fees can be split into 2 installments upon prior approval from the Finance Office.\n- Education Loans: Institutional tie-ups with SBI, HDFC, and Canara Bank for pre-approved education loans.\n- Refund Policy: In accordance with UGC norms: 100% refund (minus INR 1,000 processing fee) if withdrawn before the official admission close date.",
+      "suggestions": ["Tuition fee structure", "Office timings", "Contact finance office"]
+    },
+    {
+      "intent": "exam_schedule",
+      "category": "exams",
+      "description": "Datesheets, semester exam timetable, and mid-term tests",
+      "patterns": [
+        "When are the semester exams held?",
+        "Exam datesheet and timetable for B.Tech",
+        "When do mid-term examinations start?",
+        "Where can I find the exam schedule?",
+        "Final exam dates for winter semester",
+        "When is the end semester examination?",
+        "What are the exam dates for this year?",
+        "Academic calendar for examinations",
+        "Practical and lab exam dates",
+        "When will the datesheet be released?"
+      ],
+      "entities": ["exam schedule", "datesheet", "timetable", "mid-term", "semester exams"],
+      "response": "Examination Schedule (Standard Academic Calendar):\n- Mid-Term Exams (Internal 1 & 2): Held in September & November (Odd Sem) and February & April (Even Sem).\n- End-Semester Final Exams: December 1 to December 22 (Odd Sem) and May 10 to June 2 (Even Sem).\n- Practical / Viva Exams: Conducted 10 days prior to written theory exams.\nThe detailed datesheet is published 3 weeks in advance on the Examination Notice Board and ERP Portal.",
+      "suggestions": ["Hall ticket download", "Grading system", "Backlog exams"]
+    },
+    {
+      "intent": "exam_hallticket",
+      "category": "exams",
+      "description": "Downloading exam admit cards, eligibility, and attendance threshold",
+      "patterns": [
+        "How can I download my exam hall ticket?",
+        "Where to get the admit card for semester exams?",
+        "What attendance is required to appear in exams?",
+        "Can I write exams with less than 75% attendance?",
+        "Hall ticket not generating in portal",
+        "When is the admit card released?",
+        "Do I need HOD signature on hall ticket?",
+        "Steps to download exam admit card",
+        "Exam hall ticket requirements",
+        "Admit card issue date"
+      ],
+      "entities": ["hall ticket", "admit card", "attendance", "75% attendance"],
+      "response": "Exam Hall Ticket Guidelines:\n- Download: Log in to the ERP Portal -> Examination Cell -> 'Download Hall Ticket' (available 5 days before exams).\n- Attendance Rule: Minimum 75% attendance in theory and practicals is strictly mandatory to generate the hall ticket. Students with 65-74% on medical grounds must submit certificates to the Dean of Academics for condonation.\n- Physical verification: Carry the printed hall ticket along with your original Student ID Card to the exam hall.",
+      "suggestions": ["Exam schedule", "Exam rules", "Contact exam controller"]
+    },
+    {
+      "intent": "exam_grading",
+      "category": "exams",
+      "description": "Grading scale, SGPA/CGPA calculation, and pass criteria",
+      "patterns": [
+        "What is the grading system in college?",
+        "How is CGPA calculated from SGPA?",
+        "What are the minimum passing marks in a subject?",
+        "Explain the letter grades O, A+, A, B+",
+        "What CGPA is required for First Class with Distinction?",
+        "How does the credit point system work?",
+        "Passing marks in internal vs end semester exam",
+        "Grade conversion formula to percentage",
+        "Is there relative grading or absolute grading?",
+        "How is final degree GPA calculated?"
+      ],
+      "entities": ["grading system", "CGPA", "SGPA", "pass marks", "credits"],
+      "response": "Grading System (10-Point Scale):\n- O (Outstanding): 90-100% (Grade Point 10)\n- A+ (Excellent): 80-89% (Grade Point 9)\n- A (Very Good): 70-79% (Grade Point 8)\n- B+ (Good): 60-69% (Grade Point 7)\n- B (Above Average): 50-59% (Grade Point 6)\n- P (Pass): 40-49% (Grade Point 5)\n- F (Fail): Below 40% (Grade Point 0)\nPassing requirement: Minimum 40% in end-semester theory and 50% aggregate (internal + external). Percentage = (CGPA - 0.75) * 10.",
+      "suggestions": ["Revaluation process", "Backlog rules", "Exam dates"]
+    },
+    {
+      "intent": "exam_revaluation",
+      "category": "exams",
+      "description": "Answer script rechecking, revaluation, and photocopies",
+      "patterns": [
+        "How can I apply for exam revaluation?",
+        "What is the procedure for paper rechecking?",
+        "Can I get a photocopy of my evaluated answer sheet?",
+        "Deadline to apply for re-evaluation",
+        "When are revaluation results announced?",
+        "Is revaluation fee refundable if marks increase?",
+        "How to challenge exam paper evaluation?",
+        "Rechecking process after result declaration",
+        "Steps for answer script verification",
+        "Revaluation form on portal"
+      ],
+      "entities": ["revaluation", "rechecking", "photocopy", "challenge evaluation"],
+      "response": "Revaluation Procedure:\n1. Application: Students can apply via ERP Portal within 10 days of result publication.\n2. Option 1: Answer Script Photocopy (INR 300) - Reviewed with subject mentor.\n3. Option 2: Formal Revaluation (INR 750 per subject) - Evaluated by an independent external examiner.\n4. Result: If marks change by >15%, the revised grade will be updated on your grade card within 21 days.",
+      "suggestions": ["Exam fees", "Backlog procedure", "Grading system"]
+    },
+    {
+      "intent": "exam_backlogs",
+      "category": "exams",
+      "description": "Supplementary exams, clearing backlogs, and year back rules",
+      "patterns": [
+        "What happens if I fail in an exam?",
+        "How do I clear backlog papers?",
+        "When are supplementary or arrear exams conducted?",
+        "Is there a year-back system if I have backlogs?",
+        "Maximum backlogs allowed to promote to next year",
+        "Can I take backlog exams in vacation?",
+        "Do backlog marks show on final degree certificate?",
+        "Procedure for repeating failed subjects",
+        "Supplementary exam registration",
+        "Carry-over rules for engineering"
+      ],
+      "entities": ["backlog", "arrear", "supplementary", "year back", "carry over"],
+      "response": "Backlog & Supplementary Rules:\n- Supplementary examinations are held twice a year: during summer break (July) and winter break (January).\n- Promotion criteria: A student must earn at least 60% of total credits in Year 1 to be promoted to Year 2, and clear all 1st year subjects before registering for 4th year.\n- Final Degree: The consolidated grade card shows the cleared grade without an asterisk if cleared within the prescribed maximum program duration.",
+      "suggestions": ["Exam fees", "Exam schedule", "Academic counseling"]
+    },
+    {
+      "intent": "dept_cse",
+      "category": "departments",
+      "description": "Computer Science & Engineering department info, HOD, and labs",
+      "patterns": [
+        "Tell me about the Computer Science Department",
+        "Who is the HOD of Computer Science?",
+        "What specializations are in CSE?",
+        "CSE department faculty and research areas",
+        "What labs are available in CSE?",
+        "Information about Department of CSE",
+        "Is there AI and Data Science in CSE?",
+        "Computer science faculty qualifications",
+        "CSE department placement record",
+        "Contact CSE department"
+      ],
+      "entities": ["CSE", "Computer Science", "HOD", "AI", "Data Science"],
+      "response": "Department of Computer Science & Engineering (CSE):\n- Head of Department: Dr. Rajesh Kumar Sharma, Ph.D. (IIT Delhi)\n- Faculty: 45 full-time faculty members (80% doctorate holders)\n- Specializations: Artificial Intelligence & Machine Learning, Cloud Computing, Cybersecurity, Data Science, and Full-Stack Engineering\n- Labs: High-Performance Computing Lab (NVIDIA GPU clusters), IoT Systems Lab, Cybersecurity Sandbox, and Cloud Computing Center\n- Department Office: Block A, 3rd Floor | Email: hod.cse@apex-institute.edu",
+      "suggestions": ["CSE lab facilities", "B.Tech CSE fee", "CSE placement stats"]
+    },
+    {
+      "intent": "dept_ece",
+      "category": "departments",
+      "description": "Electronics and Communication Engineering department details",
+      "patterns": [
+        "Tell me about Electronics and Communication Department",
+        "Who is the HOD of ECE?",
+        "What labs are in ECE branch?",
+        "Electronics and communication faculty details",
+        "Does ECE have VLSI and Embedded Systems?",
+        "Department of ECE info",
+        "Hardware and robotics facilities in ECE",
+        "ECE courses and curriculum highlights",
+        "Contact details for ECE department",
+        "Electronics department overview"
+      ],
+      "entities": ["ECE", "Electronics", "Communication", "VLSI", "Embedded"],
+      "response": "Department of Electronics & Communication Engineering (ECE):\n- Head of Department: Dr. Sunita Menon, Ph.D. (IISc Bangalore)\n- Core Domains: VLSI Design, Embedded Systems, Signal Processing, 5G Wireless Communications, and Robotics\n- Specialized Labs: Cadence VLSI EDA Lab, Texas Instruments Embedded Systems Lab, RF & Microwave Engineering Lab, and Robotics FabLab\n- Department Office: Block B, 2nd Floor | Email: hod.ece@apex-institute.edu",
+      "suggestions": ["ECE course list", "Labs and facilities", "All departments"]
+    },
+    {
+      "intent": "dept_mech",
+      "category": "departments",
+      "description": "Mechanical Engineering department, automotive, and CAD/CAM labs",
+      "patterns": [
+        "Information on Mechanical Engineering department",
+        "Who is the HOD of Mechanical Engineering?",
+        "What workshops and machinery do you have?",
+        "Mechanical engineering labs and projects",
+        "Is there Formula Student or BAJA team?",
+        "Department of Mechanical Engineering details",
+        "Robotics and automation in mechanical branch",
+        "Faculty of mechanical engineering",
+        "Mechanical department contact",
+        "Tell me about Mech dept"
+      ],
+      "entities": ["Mechanical", "Mech", "CAD/CAM", "Robotics", "Workshop"],
+      "response": "Department of Mechanical Engineering:\n- Head of Department: Prof. Vikramaditya Rathore, Ph.D. (IIT Roorkee)\n- Highlights: State-of-the-art CNC & 3D Printing Machining Center, Fluid Mechanics & Wind Tunnel Lab, Automotive Powertrain Lab, and Advanced Thermodynamics Lab.\n- Student Teams: Team Apex Racing (Formula Student) and AeroKite (SAE Aero Design).\n- Department Office: Mechanical Workshop Complex, Ground Floor | Email: hod.mech@apex-institute.edu",
+      "suggestions": ["College workshops", "Course list UG", "All departments"]
+    },
+    {
+      "intent": "dept_civil",
+      "category": "departments",
+      "description": "Civil Engineering department, environmental, and structural labs",
+      "patterns": [
+        "Tell me about Civil Engineering department",
+        "Who is the HOD of Civil Engineering?",
+        "Civil engineering labs and surveying equipment",
+        "Structural engineering and geotechnical facilities",
+        "Department of Civil Engineering overview",
+        "Faculty in Civil department",
+        "Civil branch research areas",
+        "Contact details for Civil engineering",
+        "Civil engineering courses",
+        "Civil dept info"
+      ],
+      "entities": ["Civil", "Civil Engineering", "Structures", "Surveying"],
+      "response": "Department of Civil Engineering:\n- Head of Department: Dr. Ananya Mukherjee, Ph.D. (NIT Trichy)\n- Focus Areas: Structural Dynamics, Smart Infrastructure, Geotechnical Engineering, and Environmental Water Resources.\n- Facilities: Total Station Surveying equipment, Concrete Technology Testing Lab, Soil Mechanics Lab, and Environmental Quality Testing Station.\n- Department Office: Block C, 1st Floor | Email: hod.civil@apex-institute.edu",
+      "suggestions": ["UG courses", "Department labs", "All departments"]
+    },
+    {
+      "intent": "dept_management",
+      "category": "departments",
+      "description": "School of Management, MBA, BBA, and business incubator",
+      "patterns": [
+        "Tell me about School of Management",
+        "Department of Management Studies info",
+        "Who is the Dean of MBA / Management?",
+        "What specializations are offered in MBA?",
+        "Business incubation center and startup cell",
+        "MBA faculty and guest lectures",
+        "BBA and MBA department overview",
+        "Management school rankings and features",
+        "Contact management department",
+        "Business school details"
+      ],
+      "entities": ["Management", "MBA", "BBA", "Business School", "Incubator"],
+      "response": "Apex School of Management:\n- Dean: Dr. Sandeep K. Verma (Alumnus IIM Ahmedabad)\n- Programs: 2-Year Full-Time MBA and 3-Year BBA\n- Specializations: Marketing & Brand Management, Financial Engineering, Business Analytics & FinTech, Human Capital Management, and Supply Chain\n- Features: Bloomberg Finance Terminal Lab, Startup Incubation Cell (A-Ventures with seed funding support), and International Immersion Programs\n- Office: Management Tower, 4th Floor | Email: mba.dean@apex-institute.edu",
+      "suggestions": ["MBA fees", "MBA eligibility", "Placements"]
+    },
+    {
+      "intent": "dept_labs",
+      "category": "departments",
+      "description": "Specialized departmental and research laboratories",
+      "patterns": [
+        "What laboratories are available in college?",
+        "Tell me about computer labs and research labs",
+        "Are there AI labs with GPU servers?",
+        "What equipment is in the electronics and physics labs?",
+        "Departmental research facilities",
+        "Can students access labs after college hours?",
+        "List of technical laboratories",
+        "Is there an innovation makerspace on campus?",
+        "High performance computing lab details",
+        "Lab infrastructure in the college"
+      ],
+      "entities": ["labs", "GPU", "makerspace", "research", "computer lab"],
+      "response": "Apex Institute boasts 48+ advanced laboratories across disciplines:\n1. Supercomputing & AI Lab: 32x NVIDIA A100/RTX-6000 Ada GPU workstations.\n2. Makerspace & FabLab: 3D printers, laser cutters, PCB milling machines, and CNC routers.\n3. Apple iOS Development Center: 60 iMac stations for mobile app development.\n4. Clean Energy & Solar Research Lab.\n5. Central Instrumentation Facility: SEM, XRD, and Spectrophotometers for advanced material research.\nLabs are accessible till 9:30 PM for project teams and researchers with mentor permissions.",
+      "suggestions": ["Library timings", "CSE department", "Wi-Fi facility"]
+    },
+    {
+      "intent": "college_timings",
+      "category": "timings",
+      "description": "Working hours, class schedules, and instructional timings",
+      "patterns": [
+        "What are the college timings?",
+        "What time do classes start and finish?",
+        "College working hours on weekdays",
+        "Is Saturday a working day or holiday?",
+        "What is the daily lecture schedule?",
+        "At what time does the campus gate open and close?",
+        "Daily class timings for engineering students",
+        "What is the college timetable schedule?",
+        "Class period duration and timings",
+        "College schedule"
+      ],
+      "entities": ["college timings", "working hours", "class schedule", "Saturday"],
+      "response": "College Academic Timings:\n- Working Days: Monday to Friday (1st and 3rd Saturdays are instructional; 2nd and 4th Saturdays are holidays/club activity days).\n- Daily Timings: 9:00 AM to 4:30 PM.\n- Lecture Slots: 50 minutes per period with a 15-minute morning break (11:00 AM - 11:15 AM) and a 50-minute lunch break (1:00 PM - 1:50 PM).\n- Campus Main Gates: Open at 6:30 AM and close at 9:30 PM for day scholars.",
+      "suggestions": ["Library timings", "Office timings", "Bus timings"]
+    },
+    {
+      "intent": "library_timings",
+      "category": "timings",
+      "description": "Central library opening hours, reading hall, and weekend access",
+      "patterns": [
+        "What are the library timings?",
+        "When does the library open and close?",
+        "Is the library open on weekends and Sundays?",
+        "Library reading room timings during exam time",
+        "Can I study in the library at night?",
+        "What time does digital library section close?",
+        "Library operational hours",
+        "Weekend library schedule",
+        "Is library open 24/7 during exams?",
+        "Central library hours"
+      ],
+      "entities": ["library timings", "opening hours", "reading room", "weekends"],
+      "response": "Central Library Operating Hours:\n- Regular Weekdays (Mon-Fri): 8:00 AM to 10:00 PM\n- Saturdays: 9:00 AM to 6:00 PM\n- Sundays & Gazetted Holidays: 10:00 AM to 4:00 PM (Reading Section only)\n- During Examination Months: The 24/7 Night Reading Hall remains open round-the-clock with high-speed Wi-Fi and air conditioning.\n- Book Circulation / Issue Desk: Closes at 6:00 PM on weekdays.",
+      "suggestions": ["Library facilities", "College timings", "Digital library"]
+    },
+    {
+      "intent": "office_timings",
+      "category": "timings",
+      "description": "Administrative office, fee counter, and registrar hours",
+      "patterns": [
+        "What are the administrative office timings?",
+        "When is the fee counter open?",
+        "Registrar office working hours",
+        "Student helpdesk and accounts counter timings",
+        "What time can I submit documents in the office?",
+        "Admission office timings on Saturday",
+        "Admin block working hours",
+        "Office hours for certificate collection",
+        "When does the accounts department open?",
+        "Student service center timings"
+      ],
+      "entities": ["office timings", "fee counter", "admin block", "registrar"],
+      "response": "Administrative & Service Counters Timings:\n- Admin Office & Registrar Desk: Monday to Friday: 9:30 AM to 5:00 PM | Saturday: 9:30 AM to 1:30 PM.\n- Fee Counter & Accounts Section: Monday to Friday: 9:30 AM to 3:30 PM (Cashless payments available 24/7 on ERP).\n- Admission Helpdesk: Monday to Saturday: 9:00 AM to 6:00 PM (Sundays open during peak admission season June-August).\n- Student Verification Desk: 2:00 PM to 4:30 PM daily.",
+      "suggestions": ["Fee payment modes", "Contact numbers", "College timings"]
+    },
+    {
+      "intent": "sports_timings",
+      "category": "timings",
+      "description": "Gymnasium, sports complex, and swimming pool operational hours",
+      "patterns": [
+        "What are the sports complex timings?",
+        "When is the college gym open?",
+        "Gymnasium morning and evening hours",
+        "What time is the swimming pool open?",
+        "Can hostelers use sports facilities in the evening?",
+        "Sports ground floodlight timings",
+        "Weekend gym and fitness center timings",
+        "Badminton and basketball court schedule",
+        "College fitness center operational hours",
+        "Sports timings"
+      ],
+      "entities": ["sports timings", "gym", "fitness center", "swimming pool", "ground"],
+      "response": "Sports & Fitness Facility Timings:\n- Gymnasium & Fitness Center:\n  * Morning: 6:00 AM to 8:30 AM\n  * Evening: 4:30 PM to 9:00 PM (Separate trainer slots for male and female students)\n- Indoor Sports Arena (Badminton, Table Tennis, Squash): 6:00 AM to 9:30 PM\n- Outdoor Grounds (Cricket, Football, Athletic Track): 5:30 AM to 8:00 PM (Floodlights active till 9:00 PM for tournaments)\n- Olympic Swimming Pool: 6:00 AM to 8:00 AM & 4:30 PM to 7:00 PM.",
+      "suggestions": ["Sports facilities", "Hostel facilities", "Campus timings"]
+    },
+    {
+      "intent": "hostel_facility",
+      "category": "facilities",
+      "description": "Hostel rooms, mess quality, security, and amenities",
+      "patterns": [
+        "What facilities are provided in the hostel?",
+        "Tell me about the boys and girls hostel",
+        "Is there Wi-Fi and laundry in hostel?",
+        "What are hostel room amenities?",
+        "Hostel security and biometric entry",
+        "Is hot water and power backup available in hostel?",
+        "What is the quality of mess food?",
+        "Do you have single or double occupancy rooms?",
+        "Can first year students stay in hostel?",
+        "Hostel infrastructure and rules"
+      ],
+      "entities": ["hostel facility", "mess", "laundry", "room amenities", "security"],
+      "response": "Hostel & Residential Facilities:\n- Accommodation: Separate multistory hostels for Boys (Aryabhatta Hall) and Girls (Gargi Hall) with 2,400+ capacity.\n- Amenities: Fully furnished rooms with study desks, ergonomic chairs, wardrobes, 24/7 100% power backup, solar water heaters, and water purifiers on each floor.\n- Mess: Multi-cuisine hygienic vegetarian and non-vegetarian dining options serving balanced 4-time meals daily (certified by FSSAI).\n- Connectivity & Care: High-speed Wi-Fi (100 Mbps), automated laundry service, indoor recreation lounges, and 24/7 warden and CCTV security with biometric turnstiles.",
+      "suggestions": ["Hostel fees", "Hostel timings", "Medical facility"]
+    },
+    {
+      "intent": "library_facility",
+      "category": "facilities",
+      "description": "Central library resources, books, IEEE access, and digital repository",
+      "patterns": [
+        "What facilities are available in the central library?",
+        "How many books does the college library have?",
+        "Do you have access to IEEE, Springer, and ScienceDirect journals?",
+        "Tell me about the digital library",
+        "How many books can a student borrow at a time?",
+        "Is there a quiet study zone and discussion rooms?",
+        "Kindle e-book readers and online databases in library",
+        "Central library facilities overview",
+        "E-journal access for students",
+        "Library resources"
+      ],
+      "entities": ["library facility", "books", "IEEE", "digital library", "journals"],
+      "response": "Central Knowledge Resource Center (Central Library):\n- Collection: Over 85,000 printed books, 14,000 reference titles, and 250 print journals.\n- Digital Library: 120 computer terminals with institutional subscriptions to IEEE Xplore, ScienceDirect, SpringerLink, ACM Digital Library, and Scopus.\n- Borrowing Privileges: UG students can borrow 4 books for 21 days; PG/Ph.D scholars can borrow 6 books for 30 days.\n- Features: Soundproof Group Discussion Rooms, RFID automated self-kiosk checkout, and remote access via Knimbus portal.",
+      "suggestions": ["Library timings", "Digital library login", "College facilities"]
+    },
+    {
+      "intent": "wifi_facility",
+      "category": "facilities",
+      "description": "Campus Wi-Fi speed, connectivity, registration, and IT network",
+      "patterns": [
+        "Is Wi-Fi available on campus?",
+        "What is the internet speed in college?",
+        "How do I register for campus Wi-Fi?",
+        "Is Wi-Fi free for all students?",
+        "Wi-Fi credentials and portal login for hostel",
+        "Does the campus have fiber broadband connection?",
+        "Internet connectivity in classrooms and labs",
+        "Wi-Fi access across campus and hostels",
+        "Network speed and data limit",
+        "Campus Wi-Fi connectivity"
+      ],
+      "entities": ["Wi-Fi", "internet", "network", "bandwidth", "login"],
+      "response": "Campus Wi-Fi & IT Infrastructure:\n- Coverage: 100% high-density Gigabit Wi-Fi 6 coverage across academic blocks, laboratories, hostels, cafeteria, and central lawns.\n- Bandwidth: Dedicated 2 Gbps symmetric optical fiber leased line from Tier-1 ISPs.\n- Access: Every enrolled student receives institutional credentials (RollNumber@apex.edu) for secure WPA2-Enterprise login on up to 3 personal devices.\n- Portal: Register your device MAC address at https://netaccess.apex-institute.edu for instant access.",
+      "suggestions": ["IT helpdesk", "Library facilities", "Hostel facilities"]
+    },
+    {
+      "intent": "transport_facility",
+      "category": "facilities",
+      "description": "Bus routes, transport pass, fleet coverage, and timings",
+      "patterns": [
+        "Is college bus transportation available?",
+        "What are the college bus routes?",
+        "How much is the bus fee per semester?",
+        "Do buses cover the entire city?",
+        "Where do college buses pick up students?",
+        "How to apply for a student bus pass?",
+        "Are buses GPS tracked?",
+        "College transportation options for day scholars",
+        "Bus timings in the morning and evening",
+        "Transportation facility details"
+      ],
+      "entities": ["transport", "bus routes", "bus fee", "bus pass", "commute"],
+      "response": "College Transportation Network:\n- Fleet: 35 modern GPS-enabled, air-conditioned and non-AC buses connecting all major sectors, metro stations, and suburbs within a 45 km radius.\n- Safety: Live bus tracking via the 'Apex Commute' mobile app with SOS alerts and experienced drivers.\n- Timings: Morning arrival at campus by 8:40 AM; evening departures at 4:45 PM and late departure at 6:15 PM (for sports/lab students).\n- Pass Fee: INR 18,000 to 24,000 per annum depending on distance zone. Bus passes can be applied through the ERP portal.",
+      "suggestions": ["College timings", "Fee payment", "Office timings"]
+    },
+    {
+      "intent": "cafeteria_facility",
+      "category": "facilities",
+      "description": "Food court, cafeteria options, hygiene, and snacks",
+      "patterns": [
+        "What are the food options in college?",
+        "Tell me about the cafeteria and food court",
+        "Are there coffee shops like CCD or Nescafe on campus?",
+        "Is the cafeteria food hygienic and affordable?",
+        "What types of cuisines are available in the canteen?",
+        "Canteen opening hours and menu",
+        "Campus food courts and snack bars",
+        "Is there vegetarian and non-vegetarian food?",
+        "Cafeteria facility overview",
+        "Food court details"
+      ],
+      "entities": ["cafeteria", "canteen", "food court", "Nescafe", "hygiene"],
+      "response": "Campus Dining & Food Court:\n- Multi-Vendor Food Court: 600-seater air-conditioned central food court with hygienic multi-cuisine options (North Indian, South Indian, Chinese, Continental, and Healthy Juices).\n- Brands on Campus: Nescafe Coffee Kiosk, Subway, Amul Ice Cream Parlor, and Chaayos.\n- Timings: Open daily from 7:30 AM to 10:00 PM with student-friendly pricing.\n- Quality Assurance: Cleanliness and oil quality are audited monthly by the Campus Health Committee.",
+      "suggestions": ["Hostel mess", "Campus timings", "Hostel facilities"]
+    },
+    {
+      "intent": "sports_facility",
+      "category": "facilities",
+      "description": "Sports grounds, gymnasium, courts, and coaches",
+      "patterns": [
+        "What sports facilities are available in college?",
+        "Do you have a football ground and cricket pitch?",
+        "Are there tennis, basketball, and badminton courts?",
+        "Tell me about sports coaching and tournaments",
+        "Is there a gymnasium on campus?",
+        "What indoor games are available?",
+        "Annual sports fest and athletic meet",
+        "Can students participate in inter-college sports?",
+        "Sports infrastructure details",
+        "Swimming pool and athletic tracks"
+      ],
+      "entities": ["sports facility", "cricket ground", "football", "gym", "badminton"],
+      "response": "Sports & Athletics Infrastructure:\n- Outdoor: Standard 400m 8-lane synthetic running track, international-size football turf, floodlit cricket arena, 3 basketball courts, and 2 volleyball courts.\n- Indoor Complex: 4 wooden badminton courts, table tennis hall, squash court, chess, and carrom lounge.\n- Fitness: Modern cardio & strength gymnasium with certified physical trainers.\n- Activities: Annual Inter-University Sports Fest 'Apex Olympiad', sports scholarships, and dedicated university coaching teams.",
+      "suggestions": ["Sports timings", "Hostel facilities", "Scholarships"]
+    },
+    {
+      "intent": "medical_facility",
+      "category": "facilities",
+      "description": "Campus health center, 24/7 doctor, ambulance, and first aid",
+      "patterns": [
+        "Is there a hospital or medical center on campus?",
+        "What medical facilities are available for students?",
+        "Is there a doctor available 24/7?",
+        "Do you have an ambulance service on campus?",
+        "What happens in case of a medical emergency?",
+        "Are free medicines and consultations provided?",
+        "Health center and pharmacy on campus",
+        "Medical insurance for enrolled students",
+        "First aid and emergency healthcare",
+        "Campus clinic details"
+      ],
+      "entities": ["medical facility", "health center", "doctor", "ambulance", "pharmacy"],
+      "response": "Campus Healthcare & Medical Center:\n- Health Center: 8-bed in-campus medical infirmary with resident medical officers and qualified nursing staff available 24/7.\n- Emergency: Fully equipped BLS (Basic Life Support) ambulance stationed permanently on campus; tie-up with City Super-Specialty Hospital (2 km away).\n- Services: Free outpatient consultations, basic diagnostics, essential medications, and annual student health screenings.\n- Insurance: All registered students are covered under a Group Medical Accident Insurance policy of INR 2,00,000.",
+      "suggestions": ["Hostel facilities", "Contact emergency numbers", "Campus timings"]
+    },
+    {
+      "intent": "greeting",
+      "category": "general",
+      "description": "General conversational greetings and welcome messages",
+      "patterns": [
+        "Hello",
+        "Hi",
+        "Hey there",
+        "Good morning",
+        "Good afternoon",
+        "Good evening",
+        "Hi bot",
+        "Hey college assistant",
+        "Greetings",
+        "Is anyone there?"
+      ],
+      "entities": ["hello", "hi"],
+      "response": "Hello! Welcome to Apex Institute of Science & Technology Enquiry Chatbot. How can I assist you today? You can ask me about courses, fees, exams, departments, timings, or campus facilities.",
+      "suggestions": ["Available courses", "Fee structure", "Exam schedule", "Campus facilities"]
+    },
+    {
+      "intent": "goodbye",
+      "category": "general",
+      "description": "Conversation closings and goodbyes",
+      "patterns": [
+        "Bye",
+        "Goodbye",
+        "Thank you, bye",
+        "See you later",
+        "That is all for today",
+        "Thanks for your help",
+        "Good night",
+        "Have a great day",
+        "Done with queries",
+        "Exit"
+      ],
+      "entities": ["bye", "thank you"],
+      "response": "Thank you for chatting with Apex Institute Support! If you need further assistance, feel free to ask anytime or visit our admissions office. Have a wonderful day!",
+      "suggestions": ["Start new chat", "Contact admission office"]
+    },
+    {
+      "intent": "bot_identity",
+      "category": "general",
+      "description": "Explanation of bot capabilities and identity",
+      "patterns": [
+        "Who are you?",
+        "What can you do?",
+        "Tell me about this chatbot",
+        "What questions can you answer?",
+        "How do you work?",
+        "What is your name?",
+        "Are you an AI?",
+        "Can you help me with college admissions?",
+        "What services do you provide?",
+        "Chatbot capabilities"
+      ],
+      "entities": ["who are you", "capabilities", "AI"],
+      "response": "I am the Apex Institute AI Enquiry Chatbot, powered by a Transformer neural network. I can answer all your questions regarding:\n1. Courses (UG, PG, eligibility, curriculum)\n2. Fees (Tuition, hostel, exams, scholarships, payment options)\n3. Exams (Datesheets, hall tickets, grading, revaluation, backlogs)\n4. Departments (CSE, ECE, Mech, Civil, Management, lab setups)\n5. Timings (Lectures, library, admin office, sports)\n6. Campus Facilities (Hostels, library, Wi-Fi, buses, canteen, medical care).",
+      "suggestions": ["Undergraduate courses", "Tuition fee structure", "Library timings"]
+    },
+    {
+      "intent": "contact_human",
+      "category": "general",
+      "description": "Contact info for admissions, emergency, and campus helpdesk",
+      "patterns": [
+        "How can I contact the college?",
+        "What is the admission office phone number?",
+        "Can I speak with an admission counselor?",
+        "College email address and location",
+        "Where is the campus located?",
+        "Helpline number for student enquiries",
+        "How to reach the college by metro or bus?",
+        "Campus address and Google maps link",
+        "Who do I contact for urgent issues?",
+        "Human representative contact"
+      ],
+      "entities": ["contact", "phone number", "email", "address", "counselor"],
+      "response": "Apex Institute Contact Information:\n- Campus Address: Knowledge Park IV, Sector 62, Innovation Corridor, Pin - 560103\n- Admission Helpline: +91-80-2800-4500 / Toll Free: 1800-120-APEX\n- Email: admissions@apex-institute.edu | info@apex-institute.edu\n- Working Hours: Mon-Sat, 9:00 AM - 5:30 PM\n- Metro Access: 5 minutes walking distance from Knowledge Park Metro Station (Blue Line, Gate No. 2).",
+      "suggestions": ["Admission eligibility", "Campus timings", "Fee structure"]
+    },
+    {
+      "intent": "out_of_scope",
+      "category": "out_of_scope",
+      "description": "Out-of-scope / CLINC-style fallback handling",
+      "patterns": [
+        "What is the capital of France?",
+        "Tell me a joke",
+        "Who won the Cricket World Cup?",
+        "How do I bake a chocolate cake?",
+        "Book a flight ticket to New York",
+        "What is the stock price of Apple?",
+        "Write a poem about winter",
+        "What is the weather in London today?",
+        "Can you order a pizza for me?",
+        "Who is the president of USA?",
+        "Tell me about Bollywood movies",
+        "What is quantum mechanics in physics?"
+      ],
+      "entities": ["out of scope"],
+      "response": "I am specialized specifically as the College Enquiry Chatbot for Apex Institute. I can assist you with courses, fees, exams, departments, timings, and campus facilities. Please ask a question related to college academics or admissions!",
+      "suggestions": ["Undergraduate courses", "Fee structure", "Exam schedule", "Hostel facilities"]
+    }
+  ]
+}
