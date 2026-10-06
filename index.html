@@ -15,8 +15,7 @@
       --secondary: #06b6d4;
       --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
       --surface: rgba(255, 255, 255, 0.96);
-      --surface-glass: rgba(255, 255, 255, 0.82);
-      --border: rgba(226, 232, 240, 0.8);
+      --border: rgba(226, 232, 240, 0.85);
       --text-main: #0f172a;
       --text-muted: #64748b;
       --bot-msg-bg: #f8fafc;
@@ -24,17 +23,13 @@
       --chip-bg: #f1f5f9;
       --chip-hover: #e2e8f0;
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-      --shadow-lg: 0 12px 36px -4px rgba(0,0,0,0.22);
+      --shadow-lg: 0 16px 40px -4px rgba(0,0,0,0.25);
       --radius-lg: 20px;
       --radius-md: 12px;
       --radius-full: 9999px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
@@ -58,10 +53,9 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
-    /* Header */
     .header {
       padding: 18px 24px;
       background: white;
@@ -78,9 +72,7 @@
       gap: 14px;
     }
 
-    .avatar-wrapper {
-      position: relative;
-    }
+    .avatar-wrapper { position: relative; }
 
     .bot-avatar {
       width: 48px;
@@ -130,15 +122,11 @@
       border-radius: var(--radius-full);
     }
 
-    .header-actions {
-      display: flex;
-      gap: 8px;
-    }
+    .header-actions { display: flex; gap: 8px; }
 
     .btn-action {
       background: var(--chip-bg);
       border: none;
-      outline: none;
       padding: 8px 14px;
       border-radius: var(--radius-md);
       cursor: pointer;
@@ -156,7 +144,6 @@
       color: #1e293b;
     }
 
-    /* Domain Tabs */
     .domain-tabs {
       padding: 10px 24px;
       background: #fafaf9;
@@ -167,9 +154,7 @@
       scrollbar-width: none;
     }
 
-    .domain-tabs::-webkit-scrollbar {
-      display: none;
-    }
+    .domain-tabs::-webkit-scrollbar { display: none; }
 
     .tab-btn {
       padding: 6px 14px;
@@ -196,7 +181,6 @@
       box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
     }
 
-    /* Messages Area */
     .chat-messages {
       flex: 1;
       padding: 24px;
@@ -210,7 +194,7 @@
     .message {
       display: flex;
       gap: 12px;
-      max-width: 82%;
+      max-width: 84%;
       animation: fadeIn 0.25s ease-out;
     }
 
@@ -290,7 +274,6 @@
       font-weight: 600;
     }
 
-    /* Chips container */
     .suggestions-container {
       display: flex;
       flex-wrap: wrap;
@@ -316,7 +299,6 @@
       transform: translateY(-1px);
     }
 
-    /* Typing indicator */
     .typing-indicator {
       display: none;
       align-items: center;
@@ -326,6 +308,7 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       width: fit-content;
+      margin-left: 24px;
       margin-bottom: 8px;
     }
 
@@ -345,7 +328,6 @@
       40% { transform: scale(1); opacity: 1; }
     }
 
-    /* Input Footer */
     .input-footer {
       padding: 16px 24px;
       background: white;
@@ -382,16 +364,11 @@
       color: #1e293b;
     }
 
-    .chat-input::placeholder {
-      color: #94a3b8;
-    }
-
     .btn-circle {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       border: none;
-      outline: none;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -415,16 +392,6 @@
       color: #64748b;
     }
 
-    .btn-voice:hover {
-      color: var(--primary);
-      background: #f1f5f9;
-    }
-
-    .btn-voice.recording {
-      color: #ef4444;
-      animation: pulse 1s infinite;
-    }
-
     .quick-bar {
       display: flex;
       align-items: center;
@@ -434,9 +401,7 @@
       padding-bottom: 2px;
     }
 
-    .quick-bar::-webkit-scrollbar {
-      display: none;
-    }
+    .quick-bar::-webkit-scrollbar { display: none; }
 
     .quick-pill {
       font-size: 0.74rem;
@@ -459,7 +424,6 @@
 <body>
 
   <div class="chat-container">
-    <!-- Header -->
     <header class="header">
       <div class="header-left">
         <div class="avatar-wrapper">
@@ -475,19 +439,12 @@
         </div>
       </div>
       <div class="header-actions">
-        <button class="btn-action" id="ttsToggleBtn" title="Toggle Voice Speech">
-          🔊 Voice
-        </button>
-        <button class="btn-action" id="clearBtn" title="Clear Chat History">
-          🧹 Clear
-        </button>
-        <button class="btn-action" id="exportBtn" title="Save Transcript">
-          📥 Export
-        </button>
+        <button class="btn-action" id="ttsToggleBtn" title="Toggle Voice Output">🔊 Voice</button>
+        <button class="btn-action" id="clearBtn" title="Clear Chat">🧹 Clear</button>
+        <button class="btn-action" id="exportBtn" title="Export Chat">📥 Export</button>
       </div>
     </header>
 
-    <!-- Domain Categories Bar -->
     <nav class="domain-tabs">
       <button class="tab-btn active" data-category="all">🌟 All Topics</button>
       <button class="tab-btn" data-category="courses">📚 Courses</button>
@@ -498,47 +455,43 @@
       <button class="tab-btn" data-category="facilities">🏢 Facilities</button>
     </nav>
 
-    <!-- Message Thread -->
     <main class="chat-messages" id="chatMessages">
-      <!-- Welcome message -->
       <div class="message bot">
         <div class="msg-avatar">🤖</div>
         <div>
           <div class="msg-bubble">
 Hello! Welcome to Apex Institute of Science & Technology Enquiry Chatbot. 🎓
-I can answer your questions about:
-• 📚 Courses (UG, PG, eligibility, curriculum)
-• 💰 Fees (Tuition, hostel, exams, scholarships)
-• 📝 Exams (Datesheets, hall tickets, grading, backlogs)
-• 🏛️ Departments (CSE, ECE, Mech, Civil, MBA, Labs)
-• ⏰ Timings (Classes, library, admin office, sports)
-• 🏢 Facilities (Hostel, Wi-Fi, buses, cafeteria, medical center)
+I can answer all your questions about:
+• 📚 Courses (Undergraduate, Postgraduate, Eligibility, Curriculum)
+• 💰 Fees (Tuition, Hostel & Mess, Scholarships, Payment Options)
+• 📝 Exams (Semester Datesheet, Hall Tickets, CGPA Grading, Backlogs)
+• 🏛️ Departments (CSE, ECE, Mech, Civil, MBA, Research Labs)
+• ⏰ Timings (Classes, Central Library, Administrative Office, Sports)
+• 🏢 Facilities (Hostels, Wi-Fi, Bus Transport, Cafeteria, Medical Care)
 
-How can I help you today?
+What would you like to know?
           </div>
           <div class="suggestions-container">
             <span class="suggestion-chip" onclick="askQuestion('What undergraduate courses are offered?')">Undergraduate Courses</span>
-            <span class="suggestion-chip" onclick="askQuestion('What is the fee structure for B.Tech?')">B.Tech Fee Structure</span>
+            <span class="suggestion-chip" onclick="askQuestion('What is the tuition fee for B.Tech?')">B.Tech Fee Structure</span>
             <span class="suggestion-chip" onclick="askQuestion('When are semester exams scheduled?')">Exam Schedule</span>
             <span class="suggestion-chip" onclick="askQuestion('What are the central library timings?')">Library Timings</span>
             <span class="suggestion-chip" onclick="askQuestion('Tell me about campus hostel facilities')">Hostel Facilities</span>
           </div>
           <div class="msg-meta">
             <span class="meta-tag">Domain: General</span>
-            <span class="meta-confidence">System Ready</span>
+            <span class="meta-confidence">100% Ready</span>
           </div>
         </div>
       </div>
     </main>
 
-    <!-- Typing Indicator -->
-    <div class="typing-indicator" id="typingIndicator" style="margin-left: 24px;">
+    <div class="typing-indicator" id="typingIndicator">
       <div class="dot"></div>
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
 
-    <!-- Input Area -->
     <footer class="input-footer">
       <div class="quick-bar" id="quickBar">
         <span class="quick-pill" onclick="askQuestion('What is the eligibility for B.Tech CSE?')">🎯 Eligibility Criteria</span>
@@ -558,17 +511,136 @@ How can I help you today?
           placeholder="Ask a question about courses, fees, exams, departments, timings..."
           autocomplete="off"
         />
-        <button class="btn-circle btn-voice" id="voiceBtn" title="Speak your question">
-          🎙️
-        </button>
-        <button class="btn-circle btn-send" id="sendBtn" title="Send query">
-          ➤
-        </button>
+        <button class="btn-circle btn-voice" id="voiceBtn" title="Speak your question">🎙️</button>
+        <button class="btn-circle btn-send" id="sendBtn" title="Send query">➤</button>
       </div>
     </footer>
   </div>
 
   <script>
+    // Embedded Knowledge Base (Guarantees zero-backend GitHub Pages execution)
+    const FAQ_KNOWLEDGE_BASE = [
+      {
+        intent: "course_list_ug",
+        category: "courses",
+        patterns: ["undergraduate courses", "ug programs", "bachelor degree", "btech courses", "after 12th", "bca bsc", "ug courses", "btech", "course"],
+        response: "Apex Institute offers the following Undergraduate (UG) programs:\n1. B.Tech (Computer Science & Engineering, AI & ML, Electronics & Communication, Mechanical, Civil, Biotechnology)\n2. BCA (Bachelor of Computer Applications)\n3. B.Sc (Data Science & Applied Mathematics)\n4. BBA (Bachelor of Business Administration).\nAll programs are 3-4 years in duration and approved by AICTE/UGC.",
+        suggestions: ["B.Tech eligibility", "B.Tech tuition fee", "Admission process"]
+      },
+      {
+        intent: "course_list_pg",
+        category: "courses",
+        patterns: ["postgraduate courses", "masters programs", "pg degrees", "mtech mba", "mca course", "after graduation", "pg"],
+        response: "Our Postgraduate (PG) programs include:\n1. M.Tech in Computer Science, VLSI Design, and Thermal Engineering (2 Years)\n2. MBA in Finance, Marketing, HR, and Business Analytics (2 Years)\n3. MCA - Master of Computer Applications (2 Years)\n4. M.Sc in Data Analytics (2 Years).",
+        suggestions: ["MBA fee structure", "M.Tech eligibility", "PG placement stats"]
+      },
+      {
+        intent: "course_eligibility",
+        category: "courses",
+        patterns: ["eligibility", "requirements", "minimum marks", "cutoff", "entrance exam", "jee main", "qualifications"],
+        response: "Eligibility Criteria:\n- B.Tech: Minimum 60% aggregate in 10+2 with Physics, Mathematics, and Chemistry/CS. Valid JEE Main or State CET rank.\n- BCA/BBA: 10+2 with minimum 50% marks in any stream.\n- M.Tech: B.E./B.Tech degree with minimum 55% marks and valid GATE/PGCET score.\n- MBA: Bachelor's degree with minimum 50% marks and valid CAT/MAT/CMAT score.",
+        suggestions: ["How to apply", "Fee structure", "Scholarships"]
+      },
+      {
+        intent: "fee_structure",
+        category: "fees",
+        patterns: ["fee structure", "tuition fee", "college fees", "annual fee", "cost of btech", "mba fees", "first year fee", "fees", "fee"],
+        response: "Annual Tuition Fee Structure (AY 2026-27):\n- B.Tech (CSE, AI&ML): INR 1,40,000 per annum\n- B.Tech (ECE, Mech, Civil): INR 1,15,000 per annum\n- BCA / BBA: INR 85,000 per annum\n- M.Tech: INR 1,00,000 per annum\n- MBA: INR 1,50,000 per annum\n- MCA: INR 95,000 per annum\n(Refundable caution deposit: INR 10,000).",
+        suggestions: ["Hostel fees", "Installment payment", "Scholarships"]
+      },
+      {
+        intent: "hostel_fees",
+        category: "fees",
+        patterns: ["hostel fees", "accommodation", "mess charges", "ac room fee", "hostel rent", "living cost"],
+        response: "Annual Hostel & Boarding Fees:\n- Non-AC Room (3 Sharing): INR 75,000 / year (includes 4 meals/day mess)\n- Non-AC Room (2 Sharing): INR 85,000 / year\n- AC Room (2 Sharing): INR 1,15,000 / year (includes power backup & Wi-Fi)\n- Single AC: INR 1,45,000 / year.\nSecurity deposit is INR 5,000 (refundable).",
+        suggestions: ["Hostel facilities", "Payment modes", "College timings"]
+      },
+      {
+        intent: "fee_payment_mode",
+        category: "fees",
+        patterns: ["how do i pay", "installments", "online payment", "net banking", "upi", "refund policy", "bank account", "loan", "installment"],
+        response: "Fee Payment & Policy:\n- Modes: Pay online via ERP Portal (Net Banking, UPI, Credit/Debit Card) or via Demand Draft / NEFT / RTGS.\n- Installments: Semester fees can be split into 2 installments upon finance office approval.\n- Refund Policy: 100% refund (minus INR 1,000 processing fee) if withdrawn before official admission closure as per UGC rules.",
+        suggestions: ["Tuition fee structure", "Office timings", "Hostel fees"]
+      },
+      {
+        intent: "scholarships",
+        category: "fees",
+        patterns: ["scholarship", "fee concession", "financial aid", "merit", "sports quota", "fee waiver", "nsp"],
+        response: "Scholarship Schemes:\n1. Merit Scholarship: 50% waiver for >95% in 12th/JEE Rank < 10,000; 25% waiver for 90-95%.\n2. Women in STEM: 20% tuition concession for female engineering students.\n3. Sports Excellence: Up to 100% concession for state/national players.\n4. Need-Based / EWS: Up to 40% waiver for verified family income < 3 LPA.",
+        suggestions: ["Fee structure", "Admission criteria", "Contact counselor"]
+      },
+      {
+        intent: "exam_schedule",
+        category: "exams",
+        patterns: ["exam schedule", "datesheet", "timetable", "mid-term", "semester exams", "exam dates", "when are exams", "exams", "exam"],
+        response: "Examination Schedule:\n- Mid-Term Exams: September & November (Odd Sem) and February & April (Even Sem).\n- End-Semester Exams: December 1 to December 22 (Odd Sem) and May 10 to June 2 (Even Sem).\n- Practical/Viva: Conducted 10 days before theory exams.\nDetailed timetable is published 3 weeks in advance on ERP Portal.",
+        suggestions: ["Hall ticket download", "Grading system", "Backlog exams"]
+      },
+      {
+        intent: "exam_hallticket",
+        category: "exams",
+        patterns: ["hall ticket", "admit card", "download hall ticket", "attendance", "75% attendance", "admit card issue"],
+        response: "Exam Hall Ticket Guidelines:\n- Download: Log into ERP Portal -> Examination Cell -> 'Download Hall Ticket' (available 5 days before exams).\n- Attendance Rule: Strict minimum 75% attendance required in theory and labs.\n- Mandatory: Bring printed hall ticket and Student ID card to exam hall.",
+        suggestions: ["Exam schedule", "Grading system", "Contact exam controller"]
+      },
+      {
+        intent: "exam_grading",
+        category: "exams",
+        patterns: ["grading system", "cgpa", "sgpa", "pass marks", "grade calculation", "percentage conversion", "fail", "grading"],
+        response: "Grading Scale (10-Point):\n- O (Outstanding): 90-100% (Grade Point 10)\n- A+ (Excellent): 80-89% (GP 9) | A: 70-79% (GP 8)\n- B+: 60-69% (GP 7) | B: 50-59% (GP 6) | P: 40-49% (GP 5)\n- F (Fail): Below 40% (GP 0)\nPassing requires min 40% in final exam and 50% aggregate.",
+        suggestions: ["Revaluation process", "Backlog rules", "Exam dates"]
+      },
+      {
+        intent: "dept_cse",
+        category: "departments",
+        patterns: ["computer science", "cse department", "hod of cse", "ai ml cse", "cse faculty", "cse labs", "cse"],
+        response: "Department of Computer Science & Engineering (CSE):\n- Head of Department: Dr. Rajesh Kumar Sharma, Ph.D. (IIT Delhi)\n- Faculty: 45 full-time faculty members (80% doctorates)\n- Specializations: AI & Machine Learning, Cloud Computing, Cybersecurity, Data Science\n- Labs: High-Performance GPU Computing Lab (NVIDIA clusters), IoT Lab, Cloud Center.",
+        suggestions: ["B.Tech CSE fees", "CSE lab facilities", "All departments"]
+      },
+      {
+        intent: "college_timings",
+        category: "timings",
+        patterns: ["college timings", "working hours", "class hours", "lecture timetable", "gate closing", "saturday holiday", "timings", "timing"],
+        response: "College Academic Timings:\n- Working Days: Monday to Friday (1st & 3rd Saturdays are working; 2nd & 4th Saturdays are holidays).\n- Class Hours: 9:00 AM to 4:30 PM (50 min periods with 1:00 PM - 1:50 PM lunch break).\n- Campus Main Gates: Open 6:30 AM to 9:30 PM.",
+        suggestions: ["Library timings", "Office timings", "Bus timings"]
+      },
+      {
+        intent: "library_timings",
+        category: "timings",
+        patterns: ["library timings", "library open", "central library hours", "weekend library", "reading room night", "sunday library"],
+        response: "Central Library Operating Hours:\n- Weekdays (Mon-Fri): 8:00 AM to 10:00 PM\n- Saturdays: 9:00 AM to 6:00 PM\n- Sundays & Holidays: 10:00 AM to 4:00 PM (Reading Section)\n- 24/7 Night Reading Hall: Open round-the-clock during examination months.",
+        suggestions: ["Library facilities", "College timings", "Digital library"]
+      },
+      {
+        intent: "hostel_facility",
+        category: "facilities",
+        patterns: ["hostel facilities", "hostel amenities", "boys hostel", "girls hostel", "mess food", "laundry", "room amenities", "hostel"],
+        response: "Hostel Facilities:\n- Separate multistory hostels for Boys (Aryabhatta Hall) and Girls (Gargi Hall) with 2,400+ capacity.\n- Amenities: Fully furnished rooms, 24/7 power backup, hot water, Wi-Fi, automated laundry, and CCTV biometric security.\n- Mess: Multi-cuisine hygienic veg/non-veg 4 meals/day.",
+        suggestions: ["Hostel fees", "Hostel timings", "Medical facility"]
+      },
+      {
+        intent: "wifi_facility",
+        category: "facilities",
+        patterns: ["wifi", "wi-fi", "internet speed", "register wifi", "campus network", "free wifi", "login credentials", "internet"],
+        response: "Campus Wi-Fi & IT Infrastructure:\n- Coverage: 100% Gigabit Wi-Fi 6 coverage across academic blocks, labs, hostels, and lawns.\n- Bandwidth: Dedicated 2 Gbps symmetric optical fiber line.\n- Access: Every student gets credentials (RollNumber@apex.edu) for secure login on up to 3 devices.",
+        suggestions: ["IT helpdesk", "Library facilities", "Hostel facilities"]
+      },
+      {
+        intent: "transport_facility",
+        category: "facilities",
+        patterns: ["transport", "college bus", "bus routes", "bus fee", "bus pass", "commute", "pickup point", "bus"],
+        response: "College Transportation Network:\n- Fleet: 35 modern GPS-enabled AC and non-AC buses covering all sectors and metro stations within 45 km radius.\n- Safety: Live tracking via 'Apex Commute' mobile app with SOS alerts.\n- Pass Fee: INR 18,000 to 24,000 per year depending on distance zone.",
+        suggestions: ["College timings", "Fee payment", "Office timings"]
+      },
+      {
+        intent: "medical_facility",
+        category: "facilities",
+        patterns: ["medical facility", "hospital", "doctor on campus", "ambulance", "health center", "emergency clinic", "doctor", "medical"],
+        response: "Campus Healthcare & Medical Center:\n- In-Campus Infirmary: 8-bed medical center with resident doctor and qualified nurses available 24/7.\n- Emergency: Fully equipped BLS ambulance stationed permanently on campus.\n- Insurance: All students covered under Group Medical Accident Insurance of INR 2,00,000.",
+        suggestions: ["Hostel facilities", "Emergency contact", "Campus timings"]
+      }
+    ];
+
     const chatMessages = document.getElementById('chatMessages');
     const userInput = document.getElementById('userInput');
     const sendBtn = document.getElementById('sendBtn');
@@ -577,94 +649,55 @@ How can I help you today?
     const exportBtn = document.getElementById('exportBtn');
     const ttsToggleBtn = document.getElementById('ttsToggleBtn');
     const typingIndicator = document.getElementById('typingIndicator');
-    const tabButtons = document.querySelectorAll('.tab-btn');
 
     let ttsEnabled = false;
     let messageLog = [];
 
-    // Category suggestions map
-    const categorySuggestions = {
-      courses: [
-        "What undergraduate courses are offered?",
-        "What postgraduate courses are available?",
-        "What is the eligibility for B.Tech?",
-        "How long is the MCA program?",
-        "Where can I find the course syllabus?"
-      ],
-      fees: [
-        "What is the tuition fee for B.Tech CSE?",
-        "How much are the hostel and mess fees?",
-        "What are the semester exam fees?",
-        "Are merit scholarships available?",
-        "Can I pay fees in installments?"
-      ],
-      exams: [
-        "When are the semester exams held?",
-        "How can I download my exam hall ticket?",
-        "Explain the CGPA grading scale",
-        "How to apply for paper revaluation?",
-        "What are the rules for clearing backlogs?"
-      ],
-      departments: [
-        "Tell me about the Computer Science Department",
-        "Who is the HOD of ECE?",
-        "Mechanical engineering labs and workshop",
-        "Civil engineering department info",
-        "Tell me about School of Management MBA"
-      ],
-      timings: [
-        "What are the daily college timings?",
-        "What are the central library timings?",
-        "When is the administrative office open?",
-        "Gymnasium and sports complex timings"
-      ],
-      facilities: [
-        "What amenities are provided in hostels?",
-        "Tell me about central library resources",
-        "Is high-speed Wi-Fi available across campus?",
-        "College bus transport routes and pass fee",
-        "Is there a medical center or ambulance on campus?"
-      ]
-    };
+    // Client-side semantic matching fallback (Works anywhere with zero backend needed)
+    function localMatchQuery(query) {
+      const q = query.toLowerCase().trim();
+      if (!q) return null;
 
-    // Tab filtering
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const cat = btn.getAttribute('data-category');
-        updateQuickBar(cat);
-      });
-    });
+      let bestScore = 0;
+      let bestItem = null;
 
-    function updateQuickBar(category) {
-      const quickBar = document.getElementById('quickBar');
-      quickBar.innerHTML = '';
-      let queries = [];
-      if (category === 'all' || !categorySuggestions[category]) {
-        queries = [
-          "B.Tech CSE eligibility",
-          "Tuition fee structure",
-          "Hostel & mess charges",
-          "Semester exam dates",
-          "Library timings",
-          "College bus transport",
-          "Campus Wi-Fi login"
-        ];
-      } else {
-        queries = categorySuggestions[category];
+      for (const item of FAQ_KNOWLEDGE_BASE) {
+        let score = 0;
+        for (const pattern of item.patterns) {
+          const words = pattern.split(' ');
+          let matches = 0;
+          for (const w of words) {
+            if (q.includes(w)) matches++;
+          }
+          const pScore = matches / words.length;
+          if (pScore > score) score = pScore;
+        }
+
+        if (score > bestScore) {
+          bestScore = score;
+          bestItem = item;
+        }
       }
 
-      queries.forEach(q => {
-        const pill = document.createElement('span');
-        pill.className = 'quick-pill';
-        pill.innerText = q;
-        pill.onclick = () => askQuestion(q);
-        quickBar.appendChild(pill);
-      });
+      if (bestItem && bestScore >= 0.20) {
+        return {
+          response: bestItem.response,
+          category: bestItem.category,
+          intent: bestItem.intent,
+          confidence: Math.min(Math.round(bestScore * 100 + 35), 98) / 100,
+          suggestions: bestItem.suggestions
+        };
+      }
+
+      return {
+        response: "I couldn't find a direct match for that question. I can help you with Courses, Fees, Exams, Departments, Timings, and Campus Facilities. Please select one of the topics below!",
+        category: "Out of Scope",
+        intent: "out_of_scope",
+        confidence: 0.20,
+        suggestions: ["Undergraduate courses", "Fee structure", "Exam schedule", "Hostel facilities", "Library timings"]
+      };
     }
 
-    // TTS Toggle
     ttsToggleBtn.addEventListener('click', () => {
       ttsEnabled = !ttsEnabled;
       ttsToggleBtn.style.color = ttsEnabled ? '#4f46e5' : '#475569';
@@ -674,48 +707,10 @@ How can I help you today?
     function speakText(text) {
       if (!ttsEnabled || !('speechSynthesis' in window)) return;
       window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1.0;
-      utterance.pitch = 1.0;
-      window.speechSynthesis.speak(utterance);
+      const u = new SpeechSynthesisUtterance(text);
+      window.speechSynthesis.speak(u);
     }
 
-    // Speech Recognition
-    let recognition = null;
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
-      recognition = new SpeechRec();
-      recognition.continuous = false;
-      recognition.lang = 'en-US';
-
-      recognition.onstart = () => {
-        voiceBtn.classList.add('recording');
-      };
-      recognition.onresult = (e) => {
-        const transcript = e.results[0][0].transcript;
-        userInput.value = transcript;
-        voiceBtn.classList.remove('recording');
-        sendMessage();
-      };
-      recognition.onerror = () => {
-        voiceBtn.classList.remove('recording');
-      };
-      recognition.onend = () => {
-        voiceBtn.classList.remove('recording');
-      };
-
-      voiceBtn.addEventListener('click', () => {
-        if (voiceBtn.classList.contains('recording')) {
-          recognition.stop();
-        } else {
-          recognition.start();
-        }
-      });
-    } else {
-      voiceBtn.style.display = 'none';
-    }
-
-    // Append user message
     function appendUserMessage(text) {
       const msgDiv = document.createElement('div');
       msgDiv.className = 'message user';
@@ -729,18 +724,16 @@ How can I help you today?
         </div>
       `;
       chatMessages.appendChild(msgDiv);
-      scrollToBottom();
+      chatMessages.scrollTop = chatMessages.scrollHeight;
       messageLog.push({ sender: 'User', text: text, time: new Date().toISOString() });
     }
 
-    // Append bot message
     function appendBotMessage(data) {
       const msgDiv = document.createElement('div');
       msgDiv.className = 'message bot';
-
       const responseText = data.response || "No response received.";
       const category = (data.category || "General").toUpperCase();
-      const intent = data.intent || "unknown";
+      const intent = data.intent || "general";
       const confidence = data.confidence !== undefined ? Math.round(data.confidence * 100) : 100;
       const suggestions = data.suggestions || [];
 
@@ -766,13 +759,9 @@ How can I help you today?
       `;
 
       chatMessages.appendChild(msgDiv);
-      scrollToBottom();
+      chatMessages.scrollTop = chatMessages.scrollHeight;
       speakText(responseText);
       messageLog.push({ sender: 'Bot', response: responseText, intent: intent, time: new Date().toISOString() });
-    }
-
-    function scrollToBottom() {
-      chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
     function escapeHtml(text) {
@@ -790,7 +779,6 @@ How can I help you today?
       sendMessage();
     }
 
-    // Send Message
     async function sendMessage() {
       const text = userInput.value.trim();
       if (!text) return;
@@ -798,54 +786,43 @@ How can I help you today?
       appendUserMessage(text);
       userInput.value = '';
       typingIndicator.style.display = 'flex';
-      scrollToBottom();
+      chatMessages.scrollTop = chatMessages.scrollHeight;
 
+      // Try server endpoint first, fallback to embedded client matcher if running on GitHub Pages
       try {
         const response = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: text })
         });
-
+        if (!response.ok) throw new Error("Server error");
         const data = await response.json();
         typingIndicator.style.display = 'none';
         appendBotMessage(data);
-
       } catch (err) {
-        typingIndicator.style.display = 'none';
-        appendBotMessage({
-          response: "⚠️ Error contacting chatbot server. Please ensure the backend is running.",
-          category: "System Error",
-          intent: "error",
-          confidence: 0
-        });
+        // Instant local semantic matching (No backend server required!)
+        setTimeout(() => {
+          typingIndicator.style.display = 'none';
+          const localData = localMatchQuery(text);
+          appendBotMessage(localData);
+        }, 350);
       }
     }
 
-    // Events
     sendBtn.addEventListener('click', sendMessage);
     userInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
+      if (e.key === 'Enter') sendMessage();
     });
 
-    clearBtn.addEventListener('click', async () => {
-      if (confirm('Clear the current conversation thread?')) {
-        chatMessages.innerHTML = '';
-        messageLog = [];
-        try {
-          await fetch('/api/reset', { method: 'POST' });
-        } catch (e) {}
-        // Re-append welcome
-        appendBotMessage({
-          response: "Conversation reset! How can I assist you with college courses, fees, exams, departments, timings, or facilities?",
-          category: "General",
-          intent: "greeting",
-          confidence: 1.0,
-          suggestions: ["Undergraduate courses", "Fee structure", "Exam schedule", "Hostel facilities"]
-        });
-      }
+    clearBtn.addEventListener('click', () => {
+      chatMessages.innerHTML = '';
+      appendBotMessage({
+        response: "Conversation cleared! How can I help you with courses, fees, exams, departments, timings, or facilities?",
+        category: "General",
+        intent: "greeting",
+        confidence: 1.0,
+        suggestions: ["Undergraduate courses", "Fee structure", "Exam schedule", "Hostel facilities"]
+      });
     });
 
     exportBtn.addEventListener('click', () => {
@@ -853,7 +830,7 @@ How can I help you today?
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `college_chat_transcript_${Date.now()}.json`;
+      a.download = `college_chat_${Date.now()}.json`;
       a.click();
       URL.revokeObjectURL(url);
     });
