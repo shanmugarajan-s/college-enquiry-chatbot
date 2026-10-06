@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Institute - College Enquiry Chatbot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --primary-light: #eef2ff;
+      --secondary: #06b6d4;
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      --surface: rgba(255, 255, 255, 0.96);
+      --surface-glass: rgba(255, 255, 255, 0.82);
+      --border: rgba(226, 232, 240, 0.8);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --bot-msg-bg: #f8fafc;
+      --user-msg-bg: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+      --chip-bg: #f1f5f9;
+      --chip-hover: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 36px -4px rgba(0,0,0,0.22);
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg-gradient);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      color: var(--text-main);
+    }
+
+    .chat-container {
+      width: 100%;
+      max-width: 980px;
+      height: 90vh;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Header */
+    .header {
+      padding: 18px 24px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+    }
+
+    .bot-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+    }
+
+    .status-dot {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 12px;
+      height: 12px;
+      background: #10b981;
+      border: 2px solid white;
+      border-radius: 50%;
+    }
+
+    .header-info h1 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #1e293b;
+      letter-spacing: -0.02em;
+    }
+
+    .header-info p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .header-info p span.badge {
+      background: #e0e7ff;
+      color: #4338ca;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-action {
+      background: var(--chip-bg);
+      border: none;
+      outline: none;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: #475569;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: var(--chip-hover);
+      color: #1e293b;
+    }
+
+    /* Domain Tabs */
+    .domain-tabs {
+      padding: 10px 24px;
+      background: #fafaf9;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .domain-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-btn {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid #e2e8f0;
+      background: white;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover {
+      border-color: #cbd5e1;
+      color: #334155;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+    }
+
+    /* Messages Area */
+    .chat-messages {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      background: #fdfdfd;
+    }
+
+    .message {
+      display: flex;
+      gap: 12px;
+      max-width: 82%;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .message.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .msg-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .message.bot .msg-avatar {
+      background: #4f46e5;
+      color: white;
+    }
+
+    .message.user .msg-avatar {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .msg-bubble {
+      padding: 14px 18px;
+      border-radius: 18px;
+      font-size: 0.92rem;
+      line-height: 1.55;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .message.bot .msg-bubble {
+      background: var(--bot-msg-bg);
+      border: 1px solid var(--border);
+      color: #1e293b;
+      border-top-left-radius: 4px;
+      white-space: pre-line;
+    }
+
+    .message.user .msg-bubble {
+      background: var(--user-msg-bg);
+      color: white;
+      border-top-right-radius: 4px;
+      white-space: pre-wrap;
+    }
+
+    .msg-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .meta-tag {
+      background: #e2e8f0;
+      color: #334155;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .meta-confidence {
+      color: #10b981;
+      font-weight: 600;
+    }
+
+    /* Chips container */
+    .suggestions-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .suggestion-chip {
+      background: #eff6ff;
+      color: #2563eb;
+      border: 1px solid #bfdbfe;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .suggestion-chip:hover {
+      background: #dbeafe;
+      border-color: #93c5fd;
+      transform: translateY(-1px);
+    }
+
+    /* Typing indicator */
+    .typing-indicator {
+      display: none;
+      align-items: center;
+      gap: 4px;
+      padding: 10px 16px;
+      background: var(--bot-msg-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      width: fit-content;
+      margin-bottom: 8px;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      background: #94a3b8;
+      border-radius: 50%;
+      animation: pulse 1.4s infinite ease-in-out both;
+    }
+
+    .dot:nth-child(1) { animation-delay: -0.32s; }
+    .dot:nth-child(2) { animation-delay: -0.16s; }
+
+    @keyframes pulse {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Input Footer */
+    .input-footer {
+      padding: 16px 24px;
+      background: white;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 6px 10px 6px 18px;
+      transition: border 0.2s ease;
+    }
+
+    .input-row:focus-within {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+      background: white;
+    }
+
+    .chat-input {
+      flex: 1;
+      border: none;
+      outline: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.94rem;
+      color: #1e293b;
+    }
+
+    .chat-input::placeholder {
+      color: #94a3b8;
+    }
+
+    .btn-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-send {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-send:hover {
+      background: var(--primary-hover);
+      transform: scale(1.05);
+    }
+
+    .btn-voice {
+      background: transparent;
+      color: #64748b;
+    }
+
+    .btn-voice:hover {
+      color: var(--primary);
+      background: #f1f5f9;
+    }
+
+    .btn-voice.recording {
+      color: #ef4444;
+      animation: pulse 1s infinite;
+    }
+
+    .quick-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+
+    .quick-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .quick-pill {
+      font-size: 0.74rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: #f1f5f9;
+      color: #475569;
+      white-space: nowrap;
+      cursor: pointer;
+      border: 1px solid #e2e8f0;
+      transition: all 0.2s ease;
+    }
+
+    .quick-pill:hover {
+      background: #e2e8f0;
+      color: #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="avatar-wrapper">
+          <div class="bot-avatar">🏛️</div>
+          <div class="status-dot"></div>
+        </div>
+        <div class="header-info">
+          <h1>Apex Institute Enquiry Bot</h1>
+          <p>
+            <span>AI Academic Assistant</span>
+            <span class="badge">Transformer Powered</span>
+          </p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-action" id="ttsToggleBtn" title="Toggle Voice Speech">
+          🔊 Voice
+        </button>
+        <button class="btn-action" id="clearBtn" title="Clear Chat History">
+          🧹 Clear
+        </button>
+        <button class="btn-action" id="exportBtn" title="Save Transcript">
+          📥 Export
+        </button>
+      </div>
+    </header>
+
+    <!-- Domain Categories Bar -->
+    <nav class="domain-tabs">
+      <button class="tab-btn active" data-category="all">🌟 All Topics</button>
+      <button class="tab-btn" data-category="courses">📚 Courses</button>
+      <button class="tab-btn" data-category="fees">💰 Fees</button>
+      <button class="tab-btn" data-category="exams">📝 Exams</button>
+      <button class="tab-btn" data-category="departments">🏛️ Departments</button>
+      <button class="tab-btn" data-category="timings">⏰ Timings</button>
+      <button class="tab-btn" data-category="facilities">🏢 Facilities</button>
+    </nav>
+
+    <!-- Message Thread -->
+    <main class="chat-messages" id="chatMessages">
+      <!-- Welcome message -->
+      <div class="message bot">
+        <div class="msg-avatar">🤖</div>
+        <div>
+          <div class="msg-bubble">
+Hello! Welcome to Apex Institute of Science & Technology Enquiry Chatbot. 🎓
+I can answer your questions about:
+• 📚 Courses (UG, PG, eligibility, curriculum)
+• 💰 Fees (Tuition, hostel, exams, scholarships)
+• 📝 Exams (Datesheets, hall tickets, grading, backlogs)
+• 🏛️ Departments (CSE, ECE, Mech, Civil, MBA, Labs)
+• ⏰ Timings (Classes, library, admin office, sports)
+• 🏢 Facilities (Hostel, Wi-Fi, buses, cafeteria, medical center)
+
+How can I help you today?
+          </div>
+          <div class="suggestions-container">
+            <span class="suggestion-chip" onclick="askQuestion('What undergraduate courses are offered?')">Undergraduate Courses</span>
+            <span class="suggestion-chip" onclick="askQuestion('What is the fee structure for B.Tech?')">B.Tech Fee Structure</span>
+            <span class="suggestion-chip" onclick="askQuestion('When are semester exams scheduled?')">Exam Schedule</span>
+            <span class="suggestion-chip" onclick="askQuestion('What are the central library timings?')">Library Timings</span>
+            <span class="suggestion-chip" onclick="askQuestion('Tell me about campus hostel facilities')">Hostel Facilities</span>
+          </div>
+          <div class="msg-meta">
+            <span class="meta-tag">Domain: General</span>
+            <span class="meta-confidence">System Ready</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Typing Indicator -->
+    <div class="typing-indicator" id="typingIndicator" style="margin-left: 24px;">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <!-- Input Area -->
+    <footer class="input-footer">
+      <div class="quick-bar" id="quickBar">
+        <span class="quick-pill" onclick="askQuestion('What is the eligibility for B.Tech CSE?')">🎯 Eligibility Criteria</span>
+        <span class="quick-pill" onclick="askQuestion('How much are the hostel and mess fees?')">🏠 Hostel & Mess Fees</span>
+        <span class="quick-pill" onclick="askQuestion('Can I pay fees in installments?')">💳 Fee Installments</span>
+        <span class="quick-pill" onclick="askQuestion('How to download the exam hall ticket?')">🎫 Admit Card Download</span>
+        <span class="quick-pill" onclick="askQuestion('Who is the HOD of Computer Science?')">👨‍🏫 CSE Department & HOD</span>
+        <span class="quick-pill" onclick="askQuestion('Is there campus Wi-Fi for students?')">📶 Free Campus Wi-Fi</span>
+        <span class="quick-pill" onclick="askQuestion('Is there college bus facility?')">🚌 Bus Routes & Pass</span>
+      </div>
+
+      <div class="input-row">
+        <input
+          type="text"
+          id="userInput"
+          class="chat-input"
+          placeholder="Ask a question about courses, fees, exams, departments, timings..."
+          autocomplete="off"
+        />
+        <button class="btn-circle btn-voice" id="voiceBtn" title="Speak your question">
+          🎙️
+        </button>
+        <button class="btn-circle btn-send" id="sendBtn" title="Send query">
+          ➤
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const voiceBtn = document.getElementById('voiceBtn');
+    const clearBtn = document.getElementById('clearBtn');
+    const exportBtn = document.getElementById('exportBtn');
+    const ttsToggleBtn = document.getElementById('ttsToggleBtn');
+    const typingIndicator = document.getElementById('typingIndicator');
+    const tabButtons = document.querySelectorAll('.tab-btn');
+
+    let ttsEnabled = false;
+    let messageLog = [];
+
+    // Category suggestions map
+    const categorySuggestions = {
+      courses: [
+        "What undergraduate courses are offered?",
+        "What postgraduate courses are available?",
+        "What is the eligibility for B.Tech?",
+        "How long is the MCA program?",
+        "Where can I find the course syllabus?"
+      ],
+      fees: [
+        "What is the tuition fee for B.Tech CSE?",
+        "How much are the hostel and mess fees?",
+        "What are the semester exam fees?",
+        "Are merit scholarships available?",
+        "Can I pay fees in installments?"
+      ],
+      exams: [
+        "When are the semester exams held?",
+        "How can I download my exam hall ticket?",
+        "Explain the CGPA grading scale",
+        "How to apply for paper revaluation?",
+        "What are the rules for clearing backlogs?"
+      ],
+      departments: [
+        "Tell me about the Computer Science Department",
+        "Who is the HOD of ECE?",
+        "Mechanical engineering labs and workshop",
+        "Civil engineering department info",
+        "Tell me about School of Management MBA"
+      ],
+      timings: [
+        "What are the daily college timings?",
+        "What are the central library timings?",
+        "When is the administrative office open?",
+        "Gymnasium and sports complex timings"
+      ],
+      facilities: [
+        "What amenities are provided in hostels?",
+        "Tell me about central library resources",
+        "Is high-speed Wi-Fi available across campus?",
+        "College bus transport routes and pass fee",
+        "Is there a medical center or ambulance on campus?"
+      ]
+    };
+
+    // Tab filtering
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const cat = btn.getAttribute('data-category');
+        updateQuickBar(cat);
+      });
+    });
+
+    function updateQuickBar(category) {
+      const quickBar = document.getElementById('quickBar');
+      quickBar.innerHTML = '';
+      let queries = [];
+      if (category === 'all' || !categorySuggestions[category]) {
+        queries = [
+          "B.Tech CSE eligibility",
+          "Tuition fee structure",
+          "Hostel & mess charges",
+          "Semester exam dates",
+          "Library timings",
+          "College bus transport",
+          "Campus Wi-Fi login"
+        ];
+      } else {
+        queries = categorySuggestions[category];
+      }
+
+      queries.forEach(q => {
+        const pill = document.createElement('span');
+        pill.className = 'quick-pill';
+        pill.innerText = q;
+        pill.onclick = () => askQuestion(q);
+        quickBar.appendChild(pill);
+      });
+    }
+
+    // TTS Toggle
+    ttsToggleBtn.addEventListener('click', () => {
+      ttsEnabled = !ttsEnabled;
+      ttsToggleBtn.style.color = ttsEnabled ? '#4f46e5' : '#475569';
+      ttsToggleBtn.style.background = ttsEnabled ? '#e0e7ff' : '#f1f5f9';
+    });
+
+    function speakText(text) {
+      if (!ttsEnabled || !('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1.0;
+      utterance.pitch = 1.0;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Speech Recognition
+    let recognition = null;
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      recognition = new SpeechRec();
+      recognition.continuous = false;
+      recognition.lang = 'en-US';
+
+      recognition.onstart = () => {
+        voiceBtn.classList.add('recording');
+      };
+      recognition.onresult = (e) => {
+        const transcript = e.results[0][0].transcript;
+        userInput.value = transcript;
+        voiceBtn.classList.remove('recording');
+        sendMessage();
+      };
+      recognition.onerror = () => {
+        voiceBtn.classList.remove('recording');
+      };
+      recognition.onend = () => {
+        voiceBtn.classList.remove('recording');
+      };
+
+      voiceBtn.addEventListener('click', () => {
+        if (voiceBtn.classList.contains('recording')) {
+          recognition.stop();
+        } else {
+          recognition.start();
+        }
+      });
+    } else {
+      voiceBtn.style.display = 'none';
+    }
+
+    // Append user message
+    function appendUserMessage(text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'message user';
+      msgDiv.innerHTML = `
+        <div class="msg-avatar">👤</div>
+        <div>
+          <div class="msg-bubble">${escapeHtml(text)}</div>
+          <div class="msg-meta" style="justify-content: flex-end;">
+            <span>${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+          </div>
+        </div>
+      `;
+      chatMessages.appendChild(msgDiv);
+      scrollToBottom();
+      messageLog.push({ sender: 'User', text: text, time: new Date().toISOString() });
+    }
+
+    // Append bot message
+    function appendBotMessage(data) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'message bot';
+
+      const responseText = data.response || "No response received.";
+      const category = (data.category || "General").toUpperCase();
+      const intent = data.intent || "unknown";
+      const confidence = data.confidence !== undefined ? Math.round(data.confidence * 100) : 100;
+      const suggestions = data.suggestions || [];
+
+      let suggestionsHtml = '';
+      if (suggestions.length > 0) {
+        suggestionsHtml = `<div class="suggestions-container">` +
+          suggestions.map(s => `<span class="suggestion-chip" onclick="askQuestion('${escapeQuotes(s)}')">${escapeHtml(s)}</span>`).join('') +
+          `</div>`;
+      }
+
+      msgDiv.innerHTML = `
+        <div class="msg-avatar">🤖</div>
+        <div>
+          <div class="msg-bubble">${escapeHtml(responseText)}</div>
+          ${suggestionsHtml}
+          <div class="msg-meta">
+            <span class="meta-tag">Domain: ${category}</span>
+            <span class="meta-tag">Intent: ${intent}</span>
+            <span class="meta-confidence">${confidence}% Confidence</span>
+            <span>• ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+          </div>
+        </div>
+      `;
+
+      chatMessages.appendChild(msgDiv);
+      scrollToBottom();
+      speakText(responseText);
+      messageLog.push({ sender: 'Bot', response: responseText, intent: intent, time: new Date().toISOString() });
+    }
+
+    function scrollToBottom() {
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.innerText = text;
+      return div.innerHTML;
+    }
+
+    function escapeQuotes(str) {
+      return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    function askQuestion(query) {
+      userInput.value = query;
+      sendMessage();
+    }
+
+    // Send Message
+    async function sendMessage() {
+      const text = userInput.value.trim();
+      if (!text) return;
+
+      appendUserMessage(text);
+      userInput.value = '';
+      typingIndicator.style.display = 'flex';
+      scrollToBottom();
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: text })
+        });
+
+        const data = await response.json();
+        typingIndicator.style.display = 'none';
+        appendBotMessage(data);
+
+      } catch (err) {
+        typingIndicator.style.display = 'none';
+        appendBotMessage({
+          response: "⚠️ Error contacting chatbot server. Please ensure the backend is running.",
+          category: "System Error",
+          intent: "error",
+          confidence: 0
+        });
+      }
+    }
+
+    // Events
+    sendBtn.addEventListener('click', sendMessage);
+    userInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    clearBtn.addEventListener('click', async () => {
+      if (confirm('Clear the current conversation thread?')) {
+        chatMessages.innerHTML = '';
+        messageLog = [];
+        try {
+          await fetch('/api/reset', { method: 'POST' });
+        } catch (e) {}
+        // Re-append welcome
+        appendBotMessage({
+          response: "Conversation reset! How can I assist you with college courses, fees, exams, departments, timings, or facilities?",
+          category: "General",
+          intent: "greeting",
+          confidence: 1.0,
+          suggestions: ["Undergraduate courses", "Fee structure", "Exam schedule", "Hostel facilities"]
+        });
+      }
+    });
+
+    exportBtn.addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(messageLog, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `college_chat_transcript_${Date.now()}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
